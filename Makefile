@@ -2,23 +2,21 @@ JAVAC=javac
 JAVA=java
 SRC_DIR=src
 BIN_DIR=bin
-MAIN_CLASS=Main
+FILE=Hello
 
-SOURCES=$(wildcard $(SRC_DIR)/*.java)
-CLASSES=$(SOURCES:$(SRC_DIR)/%.java=$(BIN_DIR)/%.class)
+SRC_FILE=$(SRC_DIR)/$(FILE).java
+CLASS_FILE=$(BIN_DIR)/$(FILE).class
 
 all: compile run
-
-compile: $(BIN_DIR) $(CLASSES)
 
 $(BIN_DIR):
 	mkdir -p $(BIN_DIR)
 
-$(BIN_DIR)/%.class: $(SRC_DIR)/%.java
-	$(JAVAC) -d $(BIN_DIR) $<
+compile: $(BIN_DIR)
+	$(JAVAC) -d $(BIN_DIR) $(SRC_FILE)
 
 run:
-	$(JAVA) -cp $(BIN_DIR) $(MAIN_CLASS)
+	$(JAVA) -cp $(BIN_DIR) $(FILE)
 
 clean:
 	rm -rf $(BIN_DIR)
