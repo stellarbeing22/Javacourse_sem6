@@ -14,10 +14,9 @@ public class typeConversion
 
         //b1 = i; //issue byte <- int: 1 byte <- 4 byte
         //this will cause loss of data
+        // if int < 255 then no loss otherwise int%256 will be stored  
         b1 = (byte)i; // this is forcefull conversion
 
         System.out.println(b1);
-
-
     }
 }
